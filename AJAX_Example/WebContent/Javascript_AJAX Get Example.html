@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Javascript_AJAX Example</title>
+</head>
+<body>
+	<div id="demo">
+		<h1>The XMLHttpRequest Object by GET</h1>
+		<form action="HelloGet" method="get">
+		姓名:
+			<input type="text" id="userName"><p>
+		年齡:	
+			<input type="text" id="userAge">
+			<!-- <input type="text" name="userName" onkeyup="showHint(this.value)"><p> -->
+		</form>
+		<button type="button" onclick="loadDoc()">Change Content</button>
+	</div>
+	<script>
+		var userName;
+		var userAge;
+		function loadDoc() {
+			var xhttp = new XMLHttpRequest();
+			userName = document.getElementById("userName").value;
+			userAge = document.getElementById("userAge").value;
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("demo").innerHTML = this.responseText;
+				}
+			};
+			/* xhttp.open("GET", "HelloGet?userName=AJAX&userAge=30", true); //localhost:8081/AJAX_Example/HelloGet?userName=周昱辰&userAge=30
+			xhttp.send(); */
+			
+			xhttp.open("GET", "HelloGet?userName=" + userName + "&userAge=" + userAge, true); //localhost:8081/AJAX_Example/HelloGet
+			xhttp.send();
+		}
+	</script>
+</body>
+</html>

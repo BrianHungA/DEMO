@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery_AJAX Example</title>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+</head>
+<body>
+	<div id="demo">
+		<h1>The XMLHttpRequest Object by GET</h1>
+		<form action="HelloGet" method="get">
+			姓名: <input type="text" id="userName"><p>
+			年齡: <input type="text" id="userAge">
+		</form>
+		<button id="changeDiv" type="button">Change Content</button>
+	</div>
+	<script>
+		$(document).ready(
+				function() {
+					$('#changeDiv').click(
+							function() {
+								var un = $('#userName').val();
+								var ua = $('#userAge').val();
+								/* var content = $.get( "HelloGet", { userName: un, userAge: ua } ) */
+								var content = $.get("HelloGet",
+										"userName=" + un + "&userAge=" + ua)
+										.done(function(data) {
+											/* alert( "Data Loaded: " + data ); */
+											alert("success");
+											$('#demo').html(data);
+										}).fail(function(data) {
+											alert("error");
+										})
+								/* .always(function(data){
+								}) */;
+							});
+				});
+	</script>
+</body>
+</html>
