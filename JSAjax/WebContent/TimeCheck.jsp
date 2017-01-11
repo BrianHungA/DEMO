@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div>
-		<h2 id="time">現在時間: <% Date date = new Date(); out.print(date);%></h2>
+		<h2 id="time">現在的時間: <% Date date = new Date(); out.print(date);%></h2>
 	</div>
 </body>
 </html>
